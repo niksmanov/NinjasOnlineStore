@@ -4,8 +4,7 @@
     {
         static void Main()
         {
-            //DataImporter.JsonParser();
-            DataImporter.TestGenerateSportItems();
+            DataImporter.JsonParser();
         }
     }
 }

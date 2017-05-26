@@ -49,8 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Additions\Brand.cs" />
+    <Compile Include="Additions\Color.cs" />
+    <Compile Include="Additions\Model.cs" />
+    <Compile Include="Additions\Size.cs" />
+    <Compile Include="Additions\Type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SportItem.cs" />
+    <Compile Include="Shoe.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

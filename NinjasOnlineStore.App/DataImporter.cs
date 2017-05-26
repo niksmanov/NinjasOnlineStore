@@ -1,7 +1,5 @@
 ﻿using NinjasOnlineStore.Data;
-using NinjasOnlineStore.Models;
 using System;
-using System.Collections.Generic;
 
 namespace NinjasOnlineStore.App
 {
@@ -13,7 +11,7 @@ namespace NinjasOnlineStore.App
             return database;
         }
 
-        public static void TestGenerateSportItems()
+        public static void JsonParser()
         {
             Console.WriteLine("Adding new data...");
             var database = DbConnecton();
@@ -21,24 +19,12 @@ namespace NinjasOnlineStore.App
             //database.Configuration.AutoDetectChangesEnabled = false;
             //database.Configuration.ValidateOnSaveEnabled = false;
 
-            var sportItemsList = new List<SportItem>();
+            database.Database.CreateIfNotExists(); //only if we don't have any records
 
-            var sportItem = new SportItem
-            {
-                Name = "Mnogo qk sport item"
-            };
-            sportItemsList.Add(sportItem);
-
-            database.SportItems.AddRange(sportItemsList);
             database.SaveChanges();
-            Console.WriteLine("Sport items added successfully!");
+            Console.WriteLine("Data added successfully!");
             //database.Configuration.AutoDetectChangesEnabled = true;
             //database.Configuration.ValidateOnSaveEnabled = true;
-        }
-
-        public static void JsonParser()
-        {
-            //JSON objects
         }
     }
 }
