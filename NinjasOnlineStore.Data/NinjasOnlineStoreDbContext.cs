@@ -11,14 +11,14 @@ namespace NinjasOnlineStore.Data
         }
 
         //Additions
-        public virtual IDbSet<Size> Sizes { get; set; }
-        public virtual IDbSet<Brand> Brands { get; set; }
-        public virtual IDbSet<Model> Models { get; set; }
-        public virtual IDbSet<Color> Colors { get; set; }
-        public virtual IDbSet<Type> Types { get; set; }
+        public IDbSet<Size> Sizes { get; set; }
+        public IDbSet<Brand> Brands { get; set; }
+        public IDbSet<Model> Models { get; set; }
+        public IDbSet<Color> Colors { get; set; }
+        public IDbSet<Type> Types { get; set; }
 
         //Models
-        public virtual IDbSet<Shoe> Shoes { get; set; }
+        public IDbSet<Shoe> Shoes { get; set; }
 
     }
 }
