@@ -22,6 +22,7 @@ namespace NinjasOnlineStore.Data
         public IDbSet<Jacket> Jacket { get; set; }
         public IDbSet<Pants> Pants { get; set; }
         public IDbSet<TShirt> TShirts { get; set; }
+        public IDbSet<SwimmingSuit> SwimmingSuits { get; set; }
 
     }
 }
