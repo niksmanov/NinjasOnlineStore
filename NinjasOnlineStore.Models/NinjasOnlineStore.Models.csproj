@@ -58,6 +58,8 @@
     <Compile Include="Pants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shoe.cs" />
+    <Compile Include="SwimmingSuit.cs" />
+    <Compile Include="TShirt.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
