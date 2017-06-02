@@ -1,4 +1,4 @@
-﻿using NinjasOnlineStore.Models.Additions;
+using NinjasOnlineStore.Models.Additions;
 using System.ComponentModel.DataAnnotations;
 
 namespace NinjasOnlineStore.Models
@@ -8,7 +8,6 @@ namespace NinjasOnlineStore.Models
         [Key]
         public int Id { get; set; }
 
-        [MinLength(1)]
         [Required]
         public decimal Price { get; set; }
 
