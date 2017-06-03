@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NinjasOnlineStore.Models.Contracts;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NinjasOnlineStore.Models.Additions
 {
-    public class Color
+    public class Color : IAddition
     {
         [Key]
         public int Id { get; set; }

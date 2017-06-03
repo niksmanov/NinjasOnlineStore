@@ -1,9 +1,10 @@
 ﻿using NinjasOnlineStore.Models.Additions;
+using NinjasOnlineStore.Models.Contracts;
 using System.ComponentModel.DataAnnotations;
 
 namespace NinjasOnlineStore.Models
 {
-    public class TShirt
+    public class TShirt : IObject
     {
         [Key]
         public int Id { get; set; }
@@ -13,7 +14,6 @@ namespace NinjasOnlineStore.Models
 
         [Required]
         public int SizeId { get; set; }
-        //Foreign key
         public virtual Size Size { get; set; }
 
         [Required]
@@ -24,8 +24,8 @@ namespace NinjasOnlineStore.Models
         public virtual Brand Brand { get; set; }
 
         [Required]
-        public int TypeId { get; set; }
-        public virtual Type Type { get; set; }
+        public int KindId { get; set; }
+        public virtual Kind Kind { get; set; }
 
         [Required]
         public int ModelId { get; set; }

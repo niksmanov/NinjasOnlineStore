@@ -11,18 +11,17 @@ namespace NinjasOnlineStore.Data
         }
 
         //Additions
-        public IDbSet<Size> Sizes { get; set; }
-        public IDbSet<Brand> Brands { get; set; }
-        public IDbSet<Model> Models { get; set; }
-        public IDbSet<Color> Colors { get; set; }
-        public IDbSet<Type> Types { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Kind> Kinds { get; set; }
 
         //Models
-        public IDbSet<Shoe> Shoes { get; set; }
-        public IDbSet<Jacket> Jacket { get; set; }
-        public IDbSet<Pants> Pants { get; set; }
-        public IDbSet<TShirt> TShirts { get; set; }
-        public IDbSet<SwimmingSuit> SwimmingSuits { get; set; }
-
+        public DbSet<Shoe> Shoes { get; set; }
+        public DbSet<Jacket> Jackets { get; set; }
+        public DbSet<Pants> Pants { get; set; }
+        public DbSet<SwimmingSuit> SwimmingSuits { get; set; }
+        public DbSet<TShirt> TShirts { get; set; }
     }
 }

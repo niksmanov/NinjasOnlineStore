@@ -4,7 +4,8 @@
     {
         static void Main()
         {
-            DataImporter.JsonParser();
+            string jsonFilePath = "../../DATA.json";
+            DataImporter.JsonParser(jsonFilePath);
         }
     }
 }

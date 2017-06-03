@@ -53,7 +53,9 @@
     <Compile Include="Additions\Color.cs" />
     <Compile Include="Additions\Model.cs" />
     <Compile Include="Additions\Size.cs" />
-    <Compile Include="Additions\Type.cs" />
+    <Compile Include="Additions\Kind.cs" />
+    <Compile Include="Contracts\IAddition.cs" />
+    <Compile Include="Contracts\IObject.cs" />
     <Compile Include="Jacket.cs" />
     <Compile Include="Pants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
