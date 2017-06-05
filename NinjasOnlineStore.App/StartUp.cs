@@ -1,11 +1,16 @@
-﻿namespace NinjasOnlineStore.App
+﻿using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.SqLite;
+
+namespace NinjasOnlineStore.App
 {
     public class StartUp
     {
         static void Main()
         {
-            string jsonFilePath = "../../DATA.json";
-            DataImporter.JsonParser(jsonFilePath);
+            string jsonFilePath = "../../../NinjasOnlineStore.JSON/DATA.json";
+            JsonImporter.Import(jsonFilePath);
+
+            SqLiteImporter.Import();
         }
     }
 }
