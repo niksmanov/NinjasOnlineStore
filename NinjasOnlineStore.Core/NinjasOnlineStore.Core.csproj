@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{464548DC-99EE-48ED-AB2B-ED54CD237152}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NinjasOnlineStore.Core</RootNamespace>
+    <AssemblyName>NinjasOnlineStore.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandsFactory.cs" />
+    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\InitializeDatabaseCommand.cs" />
+    <Compile Include="Contracts\ICommandParser.cs" />
+    <Compile Include="Contracts\ICommandsFactory.cs" />
+    <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Contracts\IReader.cs" />
+    <Compile Include="Contracts\IServiceLocator.cs" />
+    <Compile Include="Contracts\IWriter.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Providers\CommandParser.cs" />
+    <Compile Include="Providers\ConsoleReader.cs" />
+    <Compile Include="Providers\ConsoleWriter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NinjasOnlineStore.JSON\NinjasOnlineStore.JSON.csproj">
+      <Project>{c293e849-c9a6-421f-9922-5e0990efdc99}</Project>
+      <Name>NinjasOnlineStore.JSON</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NinjasOnlineStore.PostgreSQL\NinjasOnlineStore.PostgreSQL.csproj">
+      <Project>{5b4e00a3-ee4a-4e89-89fb-fa812d58e4d8}</Project>
+      <Name>NinjasOnlineStore.PostgreSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NinjasOnlineStore.SQLite\NinjasOnlineStore.SqLite.csproj">
+      <Project>{f56407d2-477e-4769-9395-e338a4a2c805}</Project>
+      <Name>NinjasOnlineStore.SqLite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NinjasOnlineStore.SqlServer\NinjasOnlineStore.SqlServer.csproj">
+      <Project>{2638eeeb-4f39-45fb-8c17-4bd75571c7ed}</Project>
+      <Name>NinjasOnlineStore.SqlServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
