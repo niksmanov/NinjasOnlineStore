@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjasOnlineStore.SqlServer", "NinjasOnlineStore.SqlServer\NinjasOnlineStore.SqlServer.csproj", "{2638EEEB-4F39-45FB-8C17-4BD75571C7ED}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjasOnlineStore.App", "NinjasOnlineStore.App\NinjasOnlineStore.App.csproj", "{19558D9F-1834-461F-B5F7-B7E8196ED6D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjasOnlineStore.PostgreSQL", "NinjasOnlineStore.PostgreSQL\NinjasOnlineStore.PostgreSQL.csproj", "{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjasOnlineStore.Core", "NinjasOnlineStore.Core\NinjasOnlineStore.Core.csproj", "{464548DC-99EE-48ED-AB2B-ED54CD237152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464548DC-99EE-48ED-AB2B-ED54CD237152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464548DC-99EE-48ED-AB2B-ED54CD237152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464548DC-99EE-48ED-AB2B-ED54CD237152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464548DC-99EE-48ED-AB2B-ED54CD237152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

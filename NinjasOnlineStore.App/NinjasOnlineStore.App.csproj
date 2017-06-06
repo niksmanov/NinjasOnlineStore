@@ -47,6 +47,10 @@
       <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Mono.Security.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Npgsql, Version=2.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Npgsql.dll</HintPath>
       <Private>True</Private>
@@ -78,6 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NinjasOnlineStoreModule.cs" />
+    <Compile Include="ServiceLocator.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NinjasOnlineStore.Core\NinjasOnlineStore.Core.csproj">
+      <Project>{464548dc-99ee-48ed-ab2b-ed54cd237152}</Project>
+      <Name>NinjasOnlineStore.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NinjasOnlineStore.JSON\NinjasOnlineStore.JSON.csproj">
       <Project>{c293e849-c9a6-421f-9922-5e0990efdc99}</Project>
       <Name>NinjasOnlineStore.JSON</Name>
