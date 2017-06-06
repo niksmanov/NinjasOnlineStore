@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjasOnlineStore.JSON", "N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjasOnlineStore.App", "NinjasOnlineStore.App\NinjasOnlineStore.App.csproj", "{19558D9F-1834-461F-B5F7-B7E8196ED6D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjasOnlineStore.PostgreSQL", "NinjasOnlineStore.PostgreSQL\NinjasOnlineStore.PostgreSQL.csproj", "{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{19558D9F-1834-461F-B5F7-B7E8196ED6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19558D9F-1834-461F-B5F7-B7E8196ED6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19558D9F-1834-461F-B5F7-B7E8196ED6D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4E00A3-EE4A-4E89-89FB-FA812D58E4D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

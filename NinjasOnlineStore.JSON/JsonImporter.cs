@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
+using System.Linq;
 
 namespace NinjasOnlineStore.JSON
 {
@@ -94,21 +95,27 @@ namespace NinjasOnlineStore.JSON
 
             var database = SQLServerDbConnecton();
 
-            Console.WriteLine("Adding additional data...");
-            UploadInDatabase(database, database.Brands, jsonBrand, null);
-            UploadInDatabase(database, database.Colors, jsonColor, null);
-            UploadInDatabase(database, database.Models, jsonModel, null);
-            UploadInDatabase(database, database.Sizes, jsonSize, null);
-            UploadInDatabase(database, database.Kinds, jsonKind, null);
-            Console.WriteLine("Additional data added successfully!");
+            if (database.Brands.FirstOrDefault() == null)
+            {
+                Console.WriteLine("Adding additional data...");
+                UploadInDatabase(database, database.Brands, jsonBrand, null);
+                UploadInDatabase(database, database.Colors, jsonColor, null);
+                UploadInDatabase(database, database.Models, jsonModel, null);
+                UploadInDatabase(database, database.Sizes, jsonSize, null);
+                UploadInDatabase(database, database.Kinds, jsonKind, null);
+                Console.WriteLine("Additional data added successfully!");
+            }
 
-            Console.WriteLine("Adding models data...");
-            UploadInDatabase(database, database.Jackets, null, jsonModelsCollection.Jackets);
-            UploadInDatabase(database, database.Pants, null, jsonModelsCollection.Pants);
-            UploadInDatabase(database, database.Shoes, null, jsonModelsCollection.Shoes);
-            UploadInDatabase(database, database.SwimmingSuits, null, jsonModelsCollection.SwimmingSuits);
-            UploadInDatabase(database, database.TShirts, null, jsonModelsCollection.TShirts);
-            Console.WriteLine("Models data added successfully!");
+            if (database.Jackets.FirstOrDefault() == null)
+            {
+                Console.WriteLine("Adding models data...");
+                UploadInDatabase(database, database.Jackets, null, jsonModelsCollection.Jackets);
+                UploadInDatabase(database, database.Pants, null, jsonModelsCollection.Pants);
+                UploadInDatabase(database, database.Shoes, null, jsonModelsCollection.Shoes);
+                UploadInDatabase(database, database.SwimmingSuits, null, jsonModelsCollection.SwimmingSuits);
+                UploadInDatabase(database, database.TShirts, null, jsonModelsCollection.TShirts);
+                Console.WriteLine("Models data added successfully!");
+            }
         }
     }
 }

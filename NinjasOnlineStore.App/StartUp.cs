@@ -1,4 +1,5 @@
 ﻿using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.PostgreSQL;
 using NinjasOnlineStore.SqLite;
 
 namespace NinjasOnlineStore.App
@@ -11,6 +12,8 @@ namespace NinjasOnlineStore.App
             JsonImporter.Import(jsonFilePath);
 
             SqLiteImporter.Import();
+
+            PostgreSQLImporter.Import();
         }
     }
 }
