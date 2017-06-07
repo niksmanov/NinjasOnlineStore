@@ -25,7 +25,6 @@ namespace NinjasOnlineStore.Core.Providers
 
                 // Create an empty page
                 PdfPage firstPage = document.AddPage();
-                firstPage.Size = PageSize.A4;
 
                 // Get an XGraphics object for drawing
                 XGraphics firstGfx = XGraphics.FromPdfPage(firstPage);
