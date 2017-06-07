@@ -158,7 +158,6 @@ namespace NinjasOnlineStore.Core.Providers
                 document.Save(fileName);
 
                 File.Move(sourcePdfFilePath, destPdfFilePath);
-                File.Delete(sourcePdfFilePath);
             }
         }
     }
