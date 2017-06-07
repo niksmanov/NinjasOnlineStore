@@ -12,10 +12,10 @@ namespace NinjasOnlineStore.Core.Commands
         public string Execute(IList<string> parameters)
         {
             // TODO: Extract jsonFilePath as parameter
-            string jsonFilePath = "../../../NinjasOnlineStore.JSON/DATA.json";
+            const string jsonFilePath = "../../../NinjasOnlineStore.JSON/DATA.json";
 
             // TODO: Inject IWriter to replace Console
-            Console.WriteLine("Initializing JSON...");
+            Console.WriteLine("Parsing JSON and initializing SqlServer...");
 
             // TODO: Inject reporter and make Import method non static
             JsonImporter.Import(jsonFilePath);

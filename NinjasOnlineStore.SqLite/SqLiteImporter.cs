@@ -8,7 +8,7 @@ namespace NinjasOnlineStore.SqLite
 {
     public class SqLiteImporter
     {
-        private static SQLiteDbContext SQLiteDbConnecton()
+        public static SQLiteDbContext SQLiteDbConnecton()
         {
             var database = new SQLiteDbContext();
             return database;

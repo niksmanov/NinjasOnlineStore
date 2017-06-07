@@ -16,7 +16,7 @@ namespace NinjasOnlineStore.JSON
 {
     public class JsonImporter
     {
-        private static SqlServerDbContext SQLServerDbConnecton()
+        public static SqlServerDbContext SQLServerDbConnecton()
         {
             var database = new SqlServerDbContext();
             return database;

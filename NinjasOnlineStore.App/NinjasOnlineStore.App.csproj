@@ -91,6 +91,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="NinjasOnlineStoreReport.pdf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

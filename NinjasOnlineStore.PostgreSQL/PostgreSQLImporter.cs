@@ -7,7 +7,7 @@ namespace NinjasOnlineStore.PostgreSQL
 {
     public class PostgreSQLImporter
     {
-        private static PostgreSQLDbContext PostgreSQLDbConnecton()
+        public static PostgreSQLDbContext PostgreSQLDbConnecton()
         {
             var database = new PostgreSQLDbContext();
             return database;

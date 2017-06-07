@@ -1,7 +1,4 @@
 ﻿using NinjasOnlineStore.Core.Contracts;
-using NinjasOnlineStore.JSON;
-using NinjasOnlineStore.PostgreSQL;
-using NinjasOnlineStore.SqLite;
 using Ninject;
 
 namespace NinjasOnlineStore.App
@@ -15,16 +12,9 @@ namespace NinjasOnlineStore.App
             var engine = kernel.Get<IEngine>();
             engine.Start();
 
-            // To run the commented lines below
-            // start the app and enter command: InitializeDatabase
-            // ---------------------------------------------------
+            //To create the database enter the command: InitializeDatabase
 
-            //string jsonFilePath = "../../../NinjasOnlineStore.JSON/DATA.json";
-            //JsonImporter.Import(jsonFilePath);
-
-            //SqLiteImporter.Import();
-
-            //PostgreSQLImporter.Import();
+            //To create pdf report from SqlServer, PostgreSql and SqLite enter the command: GenerateReport
         }
     }
 }
