@@ -1,7 +1,6 @@
 ﻿using NinjasOnlineStore.JSON;
 using NinjasOnlineStore.PostgreSQL;
 using NinjasOnlineStore.SqLite;
-using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System.IO;
@@ -20,36 +19,27 @@ namespace NinjasOnlineStore.Core.Providers
 
             if (!folder.Contains(destPdfFilePath))
             {
-                // Create a new PDF document
+                var sqlServer = JsonImporter.SQLServerDbConnecton();
+                var postgreSql = PostgreSQLImporter.PostgreSQLDbConnecton();
+                var sqLite = SqLiteImporter.SQLiteDbConnecton();
+
                 PdfDocument document = new PdfDocument();
-
-                // Create an empty page
-                PdfPage firstPage = document.AddPage();
-
-                // Get an XGraphics object for drawing
-                XGraphics firstGfx = XGraphics.FromPdfPage(firstPage);
 
                 int fontTitleHeight = 20;
                 int fontCollectionHeight = 14;
                 int fontTextHeight = 8;
 
                 ulong spaceBetweenLines = 20;
-
-                // Create a font
+                int space = 70;
+                
                 XFont fontTitle = new XFont("Verdana", fontTitleHeight, XFontStyle.Bold);
                 XFont fontCollection = new XFont("Verdana", fontCollectionHeight, XFontStyle.Bold);
                 XFont fontText = new XFont("Verdana", fontTextHeight, XFontStyle.Regular);
 
-                // Draw the text
+                PdfPage firstPage = document.AddPage();
+                XGraphics firstGfx = XGraphics.FromPdfPage(firstPage);
                 firstGfx.DrawString("Ninjas Online Store Report", fontTitle, XBrushes.Black,
                 new XRect(0, 0, firstPage.Width, firstPage.Height), XStringFormat.TopCenter);
-
-
-                var sqlServer = JsonImporter.SQLServerDbConnecton();
-                var postgreSql = PostgreSQLImporter.PostgreSQLDbConnecton();
-                var sqLite = SqLiteImporter.SQLiteDbConnecton();
-
-                int space = 70;
 
                 firstGfx.DrawString("Jackets", fontCollection, XBrushes.Black,
                 new XRect(0, 50, firstPage.Width, 0), XStringFormat.Center);
