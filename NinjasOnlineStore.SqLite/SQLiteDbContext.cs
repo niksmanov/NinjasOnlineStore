@@ -1,10 +1,11 @@
 ﻿using NinjasOnlineStore.SqLite.Models;
 using SQLite.CodeFirst;
 using System.Data.Entity;
+using System;
 
 namespace NinjasOnlineStore.SQLite
 {
-    public class SQLiteDbContext : DbContext
+    public class SQLiteDbContext : DbContext, ISqLiteDatabase
     {
         public SQLiteDbContext() : base("Stores")
         {
@@ -14,6 +15,11 @@ namespace NinjasOnlineStore.SQLite
         {
             var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<SQLiteDbContext>(modelBuilder);
             Database.SetInitializer(sqliteConnectionInitializer);
+        }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
         }
 
         public DbSet<Shop> Shops { get; set; }

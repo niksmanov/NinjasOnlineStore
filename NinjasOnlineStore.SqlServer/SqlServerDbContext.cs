@@ -1,10 +1,11 @@
 ﻿using NinjasOnlineStore.SqlServer.Additions;
 using NinjasOnlineStore.SqlServer.Models;
 using System.Data.Entity;
+using System;
 
 namespace NinjasOnlineStore.SqlServer
 {
-    public class SqlServerDbContext : DbContext
+    public class SqlServerDbContext : DbContext, ISqlDatabase
     {
         public SqlServerDbContext() : base("NinjasOnlineStore")
         {
@@ -23,5 +24,10 @@ namespace NinjasOnlineStore.SqlServer
         public DbSet<Pants> Pants { get; set; }
         public DbSet<SwimmingSuit> SwimmingSuits { get; set; }
         public DbSet<TShirt> TShirts { get; set; }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
     }
 }
