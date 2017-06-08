@@ -1,6 +1,6 @@
 ﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
 using NinjasOnlineStore.App.Core.Contracts;
-using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +11,15 @@ namespace NinjasOnlineStore.Core.Commands.PantsCommands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
+        private readonly ISqlDatabase database;
 
-        public PantsSearchCommand(IWriter writer, IReader reader)
+        public PantsSearchCommand(IWriter writer, IReader reader, ISqlDatabase database)
         {
             this.writer = writer;
             this.reader = reader;
+            this.database = database;
         }
+
         public string Execute(IList<string> parameters)
         {
             switch (parameters[0])
@@ -36,8 +39,7 @@ namespace NinjasOnlineStore.Core.Commands.PantsCommands
 
         private void ListAllPants()
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-            var pantsCollection = database.Pants.ToList();
+            var pantsCollection = this.database.Pants.ToList();
 
             foreach (var pants in pantsCollection)
             {
@@ -45,13 +47,12 @@ namespace NinjasOnlineStore.Core.Commands.PantsCommands
             }
             this.writer.WriteLine($"We have {pantsCollection.Count()} pairs of pants in total!");
 
-            database.SaveChanges();
+            this.database.SaveChanges();
         }
 
         private void ListPantsByColor()
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-            var colors = database.Colors.ToList();
+            var colors = this.database.Colors.ToList();
 
             this.writer.WriteLine("Please choose one of the following colors:");
             foreach (var item in colors)
@@ -63,7 +64,7 @@ namespace NinjasOnlineStore.Core.Commands.PantsCommands
 
             var color = this.reader.ReadLine();
             var colorToShow = colors.Select(c => c.Name == color);
-            var pantsCollection = database.Pants.ToList();
+            var pantsCollection = this.database.Pants.ToList();
             var sortedByColor = pantsCollection.Where(j => j.Color.Name == (color));
 
             this.writer.WriteLine($"The {color} pantss are!");
@@ -75,8 +76,7 @@ namespace NinjasOnlineStore.Core.Commands.PantsCommands
             }
             this.writer.WriteLine($"We have {sortedByColor.Count()} pants with that color!");
             
-            database.SaveChanges();
-
+            this.database.SaveChanges();
         }
     }
 }

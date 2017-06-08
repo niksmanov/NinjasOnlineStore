@@ -1,6 +1,6 @@
 ﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
 using NinjasOnlineStore.App.Core.Contracts;
-using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.SqlServer;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,17 +10,18 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
+        private readonly ISqlDatabase database;
 
-        public JacketUpdateCommand(IWriter writer, IReader reader)
+        public JacketUpdateCommand(IWriter writer, IReader reader, ISqlDatabase database)
         {
             this.writer = writer;
             this.reader = reader;
+            this.database = database;
         }
 
         public string Execute(IList<string> parameters)
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-            var jacketsCollection = database.Jackets.ToList();
+            var jacketsCollection = this.database.Jackets.ToList();
 
             foreach (var jacket in jacketsCollection)
             {
@@ -40,7 +41,7 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
 
             this.writer.WriteLine($"The new jacket price is {jacketToUpdate.Price} EUR");
 
-            database.SaveChanges();
+            this.database.SaveChanges();
 
             return "Command executed successfully";
         }

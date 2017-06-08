@@ -1,6 +1,6 @@
 ﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
 using NinjasOnlineStore.App.Core.Contracts;
-using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.SqlServer;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,17 +10,18 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
+        private readonly ISqlDatabase database;
 
-        public SwimmingSuitUpdateCommand(IWriter writer, IReader reader)
+        public SwimmingSuitUpdateCommand(IWriter writer, IReader reader, ISqlDatabase database)
         {
             this.writer = writer;
             this.reader = reader;
+            this.database = database;
         }
 
         public string Execute(IList<string> parameters)
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-            var swimmingSuitsCollection = database.SwimmingSuits.ToList();
+            var swimmingSuitsCollection = this.database.SwimmingSuits.ToList();
 
             foreach (var swimmingSuits in swimmingSuitsCollection)
             {
@@ -40,7 +41,7 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
 
             this.writer.WriteLine($"The new swimming suits price is {swimmingSuitsToUpdate.Price} EUR");
 
-            database.SaveChanges();
+            this.database.SaveChanges();
 
             return "Command executed successfully";
         }

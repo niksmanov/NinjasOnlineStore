@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPgDatabase.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="PostgreSQLDbContext.cs" />
     <Compile Include="PostgreSQLImporter.cs" />

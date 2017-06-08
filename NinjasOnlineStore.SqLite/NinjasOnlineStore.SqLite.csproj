@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISqLiteDatabase.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="SQLiteDbContext.cs" />
     <Compile Include="Models\Shop.cs" />

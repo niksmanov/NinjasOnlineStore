@@ -1,6 +1,6 @@
 ﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
 using NinjasOnlineStore.App.Core.Contracts;
-using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +11,13 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
+        private readonly ISqlDatabase database;
 
-        public SwimmingSuitSearchCommand(IWriter writer, IReader reader)
+        public SwimmingSuitSearchCommand(IWriter writer, IReader reader, ISqlDatabase database)
         {
             this.writer = writer;
             this.reader = reader;
+            this.database = database;
         }
 
         public string Execute(IList<string> parameters)
@@ -36,8 +38,7 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
 
         private void ListAllSwimmingSuits()
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-            var swimmingSuitsCollection = database.SwimmingSuits.ToList();
+            var swimmingSuitsCollection = this.database.SwimmingSuits.ToList();
 
             foreach (var swimmingSuits in swimmingSuitsCollection)
             {
@@ -45,13 +46,12 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
             }
             this.writer.WriteLine($"We have {swimmingSuitsCollection.Count()} swimming suits in total!");
 
-            database.SaveChanges();
+            this.database.SaveChanges();
         }
 
         private void ListSwimmingSuitsByColor()
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-            var colors = database.Colors.ToList();
+            var colors = this.database.Colors.ToList();
 
             this.writer.WriteLine("Please choose one of the following colors:");
             foreach (var item in colors)
@@ -63,7 +63,7 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
 
             var color = this.reader.ReadLine();
             var colorToShow = colors.Select(c => c.Name == color);
-            var swimmingSuitsCollection = database.SwimmingSuits.ToList();
+            var swimmingSuitsCollection = this.database.SwimmingSuits.ToList();
             var sortedByColor = swimmingSuitsCollection.Where(j => j.Color.Name == (color));
 
             this.writer.WriteLine($"The {color} swimming suits are!");
@@ -74,7 +74,7 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
             }
             this.writer.WriteLine($"We have {sortedByColor.Count()} swimmingSuits with that color!");
 
-            database.SaveChanges();
+            this.database.SaveChanges();
 
         }
     }
