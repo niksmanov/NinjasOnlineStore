@@ -2,6 +2,9 @@
 using NinjasOnlineStore.App.Core.Contracts;
 using NinjasOnlineStore.App.Core.Providers;
 using NinjasOnlineStore.Core.Contracts;
+using NinjasOnlineStore.PostgreSQL;
+using NinjasOnlineStore.SQLite;
+using NinjasOnlineStore.SqlServer;
 using Ninject.Modules;
 
 namespace NinjasOnlineStore.App
@@ -18,6 +21,10 @@ namespace NinjasOnlineStore.App
 
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
             this.Bind<IServiceLocator>().To<ServiceLocator>();
+
+            this.Bind<ISqlDatabase>().To<SqlServerDbContext>();
+            this.Bind<IPgDatabase>().To<PostgreSQLDbContext>();
+            this.Bind<ISqLiteDatabase>().To<SQLiteDbContext>();
         }
     }
 }
