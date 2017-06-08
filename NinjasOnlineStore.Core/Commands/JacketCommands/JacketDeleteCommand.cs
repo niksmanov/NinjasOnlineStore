@@ -34,16 +34,6 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
 
             database.Jackets.Remove(jacketToDelete);
 
-            //var update = this.reader.ReadLine().Split(' ');
-            //var updateArr = update.ToArray().Select(int.Parse);
-
-            //jacketToUpdate.BrandId = updateArr.ElementAt(0);
-            //jacketToUpdate.ModelId = updateArr.ElementAt(1);
-            //jacketToUpdate.ColorId = updateArr.ElementAt(2);
-            //jacketToUpdate.KindId = updateArr.ElementAt(3);
-            //jacketToUpdate.SizeId = updateArr.ElementAt(4);
-            //jacketToUpdate.Price = updateArr.ElementAt(5);
-
             this.writer.WriteLine($"Jacket with ID: {itemId} was successfuly removed!");
 
             database.SaveChanges();

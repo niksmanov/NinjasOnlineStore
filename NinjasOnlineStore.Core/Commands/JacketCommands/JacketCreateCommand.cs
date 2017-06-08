@@ -21,11 +21,11 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
 
             var jacket = new Jacket();
 
-            jacket.BrandId = 1;
-            jacket.ModelId = 2;
-            jacket.ColorId = 3;
-            jacket.KindId = 4;
-            jacket.SizeId = 5;
+            jacket.BrandId = int.Parse(brand);
+            jacket.ModelId = int.Parse(model);
+            jacket.ColorId = int.Parse(color);
+            jacket.KindId = int.Parse(type);
+            jacket.SizeId = int.Parse(size);
             jacket.Price = Decimal.Parse(price);
 
             database.Jackets.Add(jacket);

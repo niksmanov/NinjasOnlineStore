@@ -21,11 +21,11 @@ namespace NinjasOnlineStore.Core.Commands.PantsCommands
 
             var pants = new Pants();
 
-            pants.BrandId = 1;
-            pants.ModelId = 2;
-            pants.ColorId = 3;
-            pants.KindId = 4;
-            pants.SizeId = 5;
+            pants.BrandId = int.Parse(brand);
+            pants.ModelId = int.Parse(model);
+            pants.ColorId = int.Parse(color);
+            pants.KindId = int.Parse(type);
+            pants.SizeId = int.Parse(size);
             pants.Price = Decimal.Parse(price);
 
             database.Pants.Add(pants);
