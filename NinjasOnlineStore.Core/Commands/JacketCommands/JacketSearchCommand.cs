@@ -24,15 +24,20 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
         {
             switch (parameters[0])
             {
-                case "ListAllJackets": this.ListAllJackets();
+                case "ListAllJackets":
+                    this.ListAllJackets();
                     break;
-                case "ListJacketsByColor": this.ListJacketsByColor();
+                case "ListJacketsByColor":
+                    this.ListJacketsByColor();
                     break;
-                case "ListJacketsByColorAndSize": this.ListJacketsByColorAndSize();
+                case "ListJacketsByColorAndSize":
+                    this.ListJacketsByColorAndSize();
                     break;
-                case "ListJacketsByPrice": this.ListJacketsByPrice();
+                case "ListJacketsByPrice":
+                    this.ListJacketsByPrice();
                     break;
-                case "ListJacketsByGender": this.ListJacketsByGender();
+                case "ListJacketsByGender":
+                    this.ListJacketsByGender();
                     break;
                 default: throw new ArgumentException("The provided command is not supported!");
             }

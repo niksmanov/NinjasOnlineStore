@@ -30,6 +30,15 @@ namespace NinjasOnlineStore.Core.Commands.ShoeCommands
                 case "ListShoesByColor":
                     this.ListShoesByColor();
                     break;
+                case "ListShoesByColorAndSize":
+                    this.ListShoesByColorAndSize();
+                    break;
+                case "ListShoesByPrice":
+                    this.ListShoesByPrice();
+                    break;
+                case "ListShoesByGender":
+                    this.ListShoesByGender();
+                    break;
                 default: throw new ArgumentException("The provided command is not supported!");
             }
 
@@ -75,7 +84,93 @@ namespace NinjasOnlineStore.Core.Commands.ShoeCommands
             this.writer.WriteLine($"We have {sortedByColor.Count()} shoes with that color!");
 
             this.database.SaveChanges();
+        }
 
+        private void ListShoesByColorAndSize()
+        {
+            var colors = this.database.Colors.ToList();
+            var sizes = this.database.Sizes.ToList();
+
+            this.writer.WriteLine("Please choose one of the following colors:");
+            foreach (var item in colors)
+            {
+                this.writer.Write(item.Name + ' ');
+            }
+            this.writer.WriteLine("");
+            var color = this.reader.ReadLine();
+
+            this.writer.WriteLine("Please choose one of the following sizes:");
+            foreach (var item in sizes)
+            {
+                this.writer.Write(item.Name + ' ');
+            }
+            this.writer.WriteLine("");
+            var size = this.reader.ReadLine();
+
+            var colorToShow = colors.Select(c => c.Name == color);
+            var sizeToShow = sizes.Select(s => s.Name == size);
+            var shoesCollection = this.database.Shoes.ToList();
+            var sortedByColor = shoesCollection.Where(s => (s.Color.Name == (color)) && (s.Size.Name == (size)));
+
+            this.writer.WriteLine($"{color} color shoes size {size} are!");
+
+            foreach (var shoe in sortedByColor)
+            {
+                this.writer.WriteLine($"Id: {shoe.Id}, Brand: {shoe.Brand.Name}, Model: {shoe.Model.Name}, Color: {shoe.Color.Name}, Type: {shoe.Kind.Name}, Size: {shoe.Size.Name}, Price: {shoe.Price} EUR");
+            }
+            this.writer.WriteLine($"We have {sortedByColor.Count()} shoes with {color} color and size {size}!");
+
+            this.database.SaveChanges();
+        }
+
+        private void ListShoesByPrice()
+        {
+            this.writer.WriteLine("Please choose minimum price:");
+            var priceOne = decimal.Parse(this.reader.ReadLine());
+
+            this.writer.WriteLine("Please choose maximum price:");
+            var priceTwo = decimal.Parse(this.reader.ReadLine());
+
+            var shoesCollection = this.database.Shoes.ToList();
+            var sortedByPrice = shoesCollection.Where(s => (s.Price >= (priceOne)) && (s.Price <= (priceTwo)));
+
+            this.writer.WriteLine($"Shoes with price between {priceOne} and {priceTwo} are!");
+
+            foreach (var shoe in sortedByPrice)
+            {
+                this.writer.WriteLine($"Id: {shoe.Id}, Brand: {shoe.Brand.Name}, Model: {shoe.Model.Name}, Color: {shoe.Color.Name}, Type: {shoe.Kind.Name}, Size: {shoe.Size.Name}, Price: {shoe.Price} EUR");
+            }
+            this.writer.WriteLine($"We have {sortedByPrice.Count()} shoes in a price rage between {priceOne} and {priceTwo}!");
+
+            this.database.SaveChanges();
+        }
+
+        private void ListShoesByGender()
+        {
+            var genders = this.database.Kinds.ToList();
+
+            this.writer.WriteLine("Please choose gender:");
+            foreach (var item in genders)
+            {
+                this.writer.Write(item.Name + ' ');
+            }
+
+            this.writer.WriteLine("");
+
+            var gender = this.reader.ReadLine();
+            var genderToShow = genders.Select(g => g.Name == gender);
+            var shoesCollection = this.database.Shoes.ToList();
+            var sortedByGender = shoesCollection.Where(s => s.Kind.Name == (gender));
+
+            this.writer.WriteLine($"{gender} shoes are!");
+
+            foreach (var shoe in sortedByGender)
+            {
+                this.writer.WriteLine($"Id: {shoe.Id}, Brand: {shoe.Brand.Name}, Model: {shoe.Model.Name}, Color: {shoe.Color.Name}, Type: {shoe.Kind.Name}, Size: {shoe.Size.Name}, Price: {shoe.Price} EUR");
+            }
+            this.writer.WriteLine($"We have {sortedByGender.Count()} {gender} shoes!");
+
+            this.database.SaveChanges();
         }
     }
 }
