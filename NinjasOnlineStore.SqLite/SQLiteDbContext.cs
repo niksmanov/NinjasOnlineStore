@@ -1,7 +1,6 @@
 ﻿using NinjasOnlineStore.SqLite.Models;
 using SQLite.CodeFirst;
 using System.Data.Entity;
-using System;
 
 namespace NinjasOnlineStore.SQLite
 {

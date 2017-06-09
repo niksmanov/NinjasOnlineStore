@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IJsonAddition.cs" />
     <Compile Include="Contracts\IJsonObject.cs" />
+    <Compile Include="IJsonImporter.cs" />
     <Compile Include="JsonImporter.cs" />
     <Compile Include="JsonAdditions\JsonBrand.cs" />
     <Compile Include="JsonAdditions\JsonColor.cs" />

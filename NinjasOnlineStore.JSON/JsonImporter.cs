@@ -11,18 +11,21 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace NinjasOnlineStore.JSON
 {
-    public class JsonImporter
+    public class JsonImporter : IJsonImporter
     {
-        public static SqlServerDbContext SQLServerDbConnecton()
+        private readonly ISqlDatabase database;
+        private readonly StringBuilder builder;
+        public JsonImporter(ISqlDatabase database, StringBuilder builder)
         {
-            var database = new SqlServerDbContext();
-            return database;
+            this.database = database;
+            this.builder = builder;
         }
 
-        private static void UploadInDatabase(SqlServerDbContext database, DbSet dbCollection,
+        private void UploadInDatabase(ISqlDatabase database, DbSet dbCollection,
             IJsonAddition jsonAddition = null, IEnumerable<IJsonObject> jsonObjectsCollection = null)
         {
 
@@ -60,7 +63,7 @@ namespace NinjasOnlineStore.JSON
                 {
                     addition.Name = itemToAdd;
                     dbCollection.Add(addition);
-                    database.SaveChanges();
+                    this.database.SaveChanges();
                 }
             }
             if (model != null)
@@ -74,12 +77,12 @@ namespace NinjasOnlineStore.JSON
                     model.KindId = itemToAdd.KindId;
                     model.ModelId = itemToAdd.ModelId;
                     dbCollection.Add(model);
-                    database.SaveChanges();
+                    this.database.SaveChanges();
                 }
             }
         }
 
-        public static void Import(string jsonFilePath)
+        public string Import(string jsonFilePath)
         {
             string fileContent = File.ReadAllText(jsonFilePath);
 
@@ -93,29 +96,29 @@ namespace NinjasOnlineStore.JSON
             //Models
             var jsonModelsCollection = JsonConvert.DeserializeObject<JsonModelsCollection>(fileContent);
 
-            var database = SQLServerDbConnecton();
-
-            if (database.Brands.FirstOrDefault() == null)
+            if (this.database.Brands.FirstOrDefault() == null)
             {
-                Console.WriteLine("Adding additional data...");
-                UploadInDatabase(database, database.Brands, jsonBrand, null);
-                UploadInDatabase(database, database.Colors, jsonColor, null);
-                UploadInDatabase(database, database.Models, jsonModel, null);
-                UploadInDatabase(database, database.Sizes, jsonSize, null);
-                UploadInDatabase(database, database.Kinds, jsonKind, null);
-                Console.WriteLine("Additional data added successfully!");
+                this.builder.AppendLine("Adding additional data...");
+                UploadInDatabase(this.database, this.database.Brands, jsonBrand, null);
+                UploadInDatabase(this.database, this.database.Colors, jsonColor, null);
+                UploadInDatabase(this.database, this.database.Models, jsonModel, null);
+                UploadInDatabase(this.database, this.database.Sizes, jsonSize, null);
+                UploadInDatabase(this.database, this.database.Kinds, jsonKind, null);
+                this.builder.AppendLine("Additional data added successfully!");
             }
 
-            if (database.Jackets.FirstOrDefault() == null)
+            if (this.database.Jackets.FirstOrDefault() == null)
             {
-                Console.WriteLine("Adding models data...");
-                UploadInDatabase(database, database.Jackets, null, jsonModelsCollection.Jackets);
-                UploadInDatabase(database, database.Pants, null, jsonModelsCollection.Pants);
-                UploadInDatabase(database, database.Shoes, null, jsonModelsCollection.Shoes);
-                UploadInDatabase(database, database.SwimmingSuits, null, jsonModelsCollection.SwimmingSuits);
-                UploadInDatabase(database, database.TShirts, null, jsonModelsCollection.TShirts);
-                Console.WriteLine("Models data added successfully!");
+                this.builder.AppendLine("Adding models data...");
+                UploadInDatabase(this.database, this.database.Jackets, null, jsonModelsCollection.Jackets);
+                UploadInDatabase(this.database, this.database.Pants, null, jsonModelsCollection.Pants);
+                UploadInDatabase(this.database, this.database.Shoes, null, jsonModelsCollection.Shoes);
+                UploadInDatabase(this.database, this.database.SwimmingSuits, null, jsonModelsCollection.SwimmingSuits);
+                UploadInDatabase(this.database, this.database.TShirts, null, jsonModelsCollection.TShirts);
+                this.builder.AppendLine("Models data added successfully!");
             }
+
+            return this.builder.ToString();
         }
     }
 }

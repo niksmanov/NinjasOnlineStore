@@ -1,7 +1,6 @@
 ﻿using NinjasOnlineStore.SqlServer.Additions;
 using NinjasOnlineStore.SqlServer.Models;
 using System.Data.Entity;
-using System;
 
 namespace NinjasOnlineStore.SqlServer
 {

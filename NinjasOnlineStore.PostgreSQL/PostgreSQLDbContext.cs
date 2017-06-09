@@ -1,6 +1,5 @@
 ﻿using NinjasOnlineStore.PostgreSQL.Models;
 using System.Data.Entity;
-using System;
 
 namespace NinjasOnlineStore.PostgreSQL
 {

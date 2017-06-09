@@ -11,28 +11,31 @@ namespace NinjasOnlineStore.Core.Commands
     public class InitializeDatabaseCommand : ICommand
     {
         private readonly IWriter writer;
-        public InitializeDatabaseCommand(IWriter writer)
+        private readonly IJsonImporter jsonImporter;
+        private readonly ISqLiteImporter sqLiteImporter;
+        private readonly IPostgreSQLImporter postgreImporter;
+        public InitializeDatabaseCommand(IWriter writer, IJsonImporter jsonImporter, ISqLiteImporter sqLiteImporter, PostgreSQLImporter postgreImporter)
         {
             this.writer = writer;
+            this.jsonImporter = jsonImporter;
+            this.sqLiteImporter = sqLiteImporter;
+            this.postgreImporter = postgreImporter;
         }
         public string Execute(IList<string> parameters)
         {
-            // TODO: Extract jsonFilePath as parameter
             const string jsonFilePath = "../../../NinjasOnlineStore.JSON/DATA.json";
 
-        
             this.writer.WriteLine("Parsing JSON and initializing SqlServer...");
-
-            // TODO: Inject reporter and make Import method non static
-            JsonImporter.Import(jsonFilePath);
+            var jsonImporter = this.jsonImporter.Import(jsonFilePath);
+            this.writer.Write(jsonImporter);
 
             this.writer.WriteLine("Initializing SqLite...");
-
-            // TODO: Split this command into three separate commands for each importer
-            SqLiteImporter.Import();
+            var sqLiteImporter = this.sqLiteImporter.Import();
+            this.writer.Write(sqLiteImporter);
 
             this.writer.WriteLine("Initializing Postgres...");
-            PostgreSQLImporter.Import();
+            var postgreImporter = this.postgreImporter.Import();
+            this.writer.Write(postgreImporter);
 
             return "Initialization succeeded!";
         }

@@ -80,6 +80,7 @@
     <Compile Include="Contracts\ICommandParser.cs" />
     <Compile Include="Contracts\ICommandsFactory.cs" />
     <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Contracts\IPdfReportWriter.cs" />
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IServiceLocator.cs" />
     <Compile Include="Contracts\IWriter.cs" />

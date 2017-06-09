@@ -5,7 +5,7 @@ namespace NinjasOnlineStore.App
 {
     public class StartUp
     {
-        static void Main()
+        public static void Main()
         {
             IKernel kernel = new StandardKernel(new NinjasOnlineStoreModule());
 

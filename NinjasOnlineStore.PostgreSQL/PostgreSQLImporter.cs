@@ -1,25 +1,25 @@
 ﻿using NinjasOnlineStore.PostgreSQL.Models;
 using System;
 using System.Linq;
+using System.Text;
 
 namespace NinjasOnlineStore.PostgreSQL
 
 {
-    public class PostgreSQLImporter
+    public class PostgreSQLImporter : IPostgreSQLImporter
     {
-        public static PostgreSQLDbContext PostgreSQLDbConnecton()
+        private readonly IPgDatabase database;
+        private readonly StringBuilder builder;
+        public PostgreSQLImporter(IPgDatabase database, StringBuilder builder)
         {
-            var database = new PostgreSQLDbContext();
-            return database;
+            this.database = database;
+            this.builder = builder;
         }
-
-        public static void Import()
+        public string Import()
         {
-            var database = PostgreSQLDbConnecton();
-
-            if (database.Stores.FirstOrDefault() == null)
+            if (this.database.Stores.FirstOrDefault() == null)
             {
-                Console.WriteLine("Adding stores availability...");
+                this.builder.AppendLine("Adding stores availability...");
                 var firstStore = new Store { Name = "Dianabad NinjaStore", Jackets = false, Pants = true, Shoes = true, SwimmingSuits = true, TShirts = false };
                 var secondStore = new Store { Name = "Mladost NinjaStore", Jackets = true, Pants = true, Shoes = true, SwimmingSuits = true, TShirts = true };
                 var thirdStore = new Store { Name = "St.Grad NinjaStore", Jackets = false, Pants = false, Shoes = true, SwimmingSuits = false, TShirts = false };
@@ -31,20 +31,22 @@ namespace NinjasOnlineStore.PostgreSQL
                 var ninethStore = new Store { Name = "Vuzrajdane NinjaStore", Jackets = false, Pants = true, Shoes = true, SwimmingSuits = false, TShirts = false };
                 var tenthStore = new Store { Name = "Izgrev NinjaStore", Jackets = true, Pants = true, Shoes = true, SwimmingSuits = false, TShirts = false };
 
-                database.Stores.Add(firstStore);
-                database.Stores.Add(secondStore);
-                database.Stores.Add(thirdStore);
-                database.Stores.Add(fourthStore);
-                database.Stores.Add(fifthStore);
-                database.Stores.Add(sixthStore);
-                database.Stores.Add(seventhStore);
-                database.Stores.Add(eightStore);
-                database.Stores.Add(ninethStore);
-                database.Stores.Add(tenthStore);
+                this.database.Stores.Add(firstStore);
+                this.database.Stores.Add(secondStore);
+                this.database.Stores.Add(thirdStore);
+                this.database.Stores.Add(fourthStore);
+                this.database.Stores.Add(fifthStore);
+                this.database.Stores.Add(sixthStore);
+                this.database.Stores.Add(seventhStore);
+                this.database.Stores.Add(eightStore);
+                this.database.Stores.Add(ninethStore);
+                this.database.Stores.Add(tenthStore);
 
-                database.SaveChanges();
-                Console.WriteLine("Stores availability added successfully!");
+                this.database.SaveChanges();
+                this.builder.AppendLine("Stores availability added successfully!");
             }
+
+            return this.builder.ToString();
         }
     }
 }

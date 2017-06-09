@@ -1,27 +1,26 @@
 ﻿using NinjasOnlineStore.SqLite.Models;
 using NinjasOnlineStore.SQLite;
-using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 
 namespace NinjasOnlineStore.SqLite
 {
-    public class SqLiteImporter
+    public class SqLiteImporter : ISqLiteImporter
     {
-        public static SQLiteDbContext SQLiteDbConnecton()
+        private readonly ISqLiteDatabase database;
+        private readonly StringBuilder builder;
+        public SqLiteImporter(ISqLiteDatabase database, StringBuilder builder)
         {
-            var database = new SQLiteDbContext();
-            return database;
+            this.database = database;
+            this.builder = builder;
         }
 
-
-        public static void Import()
-        {
-            var database = SQLiteDbConnecton();
-
-            if (database.Shops.FirstOrDefault() == null)
-            {
-                Console.WriteLine("Adding shops and cities...");
+        public string Import()
+        {            
+            if (this.database.Shops.FirstOrDefault() == null)
+            {                                
+                this.builder.AppendLine("Adding shops and cities...");
                 var firstShop = new Shop { Name = "Dianabad NinjaStore", CityId = 1 };
                 var secondShop = new Shop { Name = "Mladost NinjaStore", CityId = 1 };
                 var thirdShop = new Shop { Name = "St.Grad NinjaStore", CityId = 1 };
@@ -55,17 +54,19 @@ namespace NinjasOnlineStore.SqLite
                 var secondCity = new City { Name = "Plovdiv", Shops = secondShopsCollection };
                 var thirdCity = new City { Name = "Varna", Shops = thirdShopsCollection };
 
-                database.Shops.AddRange(firstShopsCollection);
-                database.Shops.AddRange(secondShopsCollection);
-                database.Shops.AddRange(thirdShopsCollection);
+                this.database.Shops.AddRange(firstShopsCollection);
+                this.database.Shops.AddRange(secondShopsCollection);
+                this.database.Shops.AddRange(thirdShopsCollection);
 
-                database.Cities.Add(firstCity);
-                database.Cities.Add(secondCity);
-                database.Cities.Add(thirdCity);
+                this.database.Cities.Add(firstCity);
+                this.database.Cities.Add(secondCity);
+                this.database.Cities.Add(thirdCity);
 
-                database.SaveChanges();
-                Console.WriteLine("Shops and cities added successfully!");
+                this.database.SaveChanges();
+                this.builder.AppendLine("Shops and cities added successfully!");
             }
+
+            return this.builder.ToString();
         }
     }
 }
