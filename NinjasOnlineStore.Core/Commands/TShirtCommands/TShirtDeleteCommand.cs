@@ -1,6 +1,6 @@
 ﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
 using NinjasOnlineStore.App.Core.Contracts;
-using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.SqlServer;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,17 +10,18 @@ namespace NinjasOnlineStore.Core.Commands.TShirtCommands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
+        private readonly ISqlDatabase database;
 
-        public TShirtDeleteCommand(IWriter writer, IReader reader)
+        public TShirtDeleteCommand(IWriter writer, IReader reader, ISqlDatabase database)
         {
             this.writer = writer;
             this.reader = reader;
+            this.database = database;
         }
 
         public string Execute(IList<string> parameters)
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-            var tShirtsCollection = database.TShirts.ToList();
+            var tShirtsCollection = this.database.TShirts.ToList();
 
             foreach (var tShirt in tShirtsCollection)
             {
@@ -32,11 +33,11 @@ namespace NinjasOnlineStore.Core.Commands.TShirtCommands
             var itemId = int.Parse(this.reader.ReadLine());
             var tShirtToDelete = tShirtsCollection.First(j => j.Id == itemId);
 
-            database.TShirts.Remove(tShirtToDelete);
+            this.database.TShirts.Remove(tShirtToDelete);
 
-            this.writer.WriteLine($"T-Shirt with ID: {itemId} was successfuly removed!");
+            this.writer.WriteLine($"T-Shirt with ID: {itemId} was successfully removed!");
 
-            database.SaveChanges();
+            this.database.SaveChanges();
 
             return "Command executed successfully";
         }

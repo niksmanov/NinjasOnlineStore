@@ -69,14 +69,20 @@
     <Compile Include="Commands\PantsCommands\PantsDeleteCommand.cs" />
     <Compile Include="Commands\PantsCommands\PantsSearchCommand.cs" />
     <Compile Include="Commands\PantsCommands\PantsUpdateCommand.cs" />
+    <Compile Include="Commands\PostgreSQLCommands\ListAllShops.cs" />
     <Compile Include="Commands\ShoeCommands\ShoeCreateCommand.cs" />
     <Compile Include="Commands\ShoeCommands\ShoeDeleteCommand.cs" />
     <Compile Include="Commands\ShoeCommands\ShoeSearchCommand.cs" />
     <Compile Include="Commands\ShoeCommands\ShoeUpdateCommand.cs" />
+    <Compile Include="Commands\SqLiteCommands\ListAllCities.cs" />
     <Compile Include="Commands\SwimmingSuitCommands\SwimmingSuitCreateCommand.cs" />
     <Compile Include="Commands\SwimmingSuitCommands\SwimmingSuitDeleteCommand.cs" />
     <Compile Include="Commands\SwimmingSuitCommands\SwimmingSuitSearchCommand.cs" />
     <Compile Include="Commands\SwimmingSuitCommands\SwimmingSuitUpdateCommand.cs" />
+    <Compile Include="Commands\TShirtCommands\TShirtCreateCommand.cs" />
+    <Compile Include="Commands\TShirtCommands\TShirtDeleteCommand.cs" />
+    <Compile Include="Commands\TShirtCommands\TShirtSearchCommand.cs" />
+    <Compile Include="Commands\TShirtCommands\TShirtUpdateCommand.cs" />
     <Compile Include="Contracts\ICommandParser.cs" />
     <Compile Include="Contracts\ICommandsFactory.cs" />
     <Compile Include="Contracts\IEngine.cs" />
@@ -114,9 +120,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\TShirtCommands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

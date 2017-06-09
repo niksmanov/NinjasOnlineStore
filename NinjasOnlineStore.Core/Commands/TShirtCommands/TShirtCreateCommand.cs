@@ -1,5 +1,5 @@
 ﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
-using NinjasOnlineStore.JSON;
+using NinjasOnlineStore.SqlServer;
 using NinjasOnlineStore.SqlServer.Models;
 using System;
 using System.Collections.Generic;
@@ -8,10 +8,15 @@ namespace NinjasOnlineStore.Core.Commands.TShirtCommands
 {
     public class TShirtCreateCommand : ICommand
     {
+        private readonly ISqlDatabase database;
+
+        public TShirtCreateCommand(ISqlDatabase database)
+        {
+            this.database = database;
+        }
+
         public string Execute(IList<string> parameters)
         {
-            var database = JsonImporter.SQLServerDbConnecton();
-
             var brand = parameters[0];
             var model = parameters[1];
             var color = parameters[2];
@@ -28,9 +33,9 @@ namespace NinjasOnlineStore.Core.Commands.TShirtCommands
             tShirt.SizeId = int.Parse(size);
             tShirt.Price = Decimal.Parse(price);
 
-            database.TShirts.Add(tShirt);
+            this.database.TShirts.Add(tShirt);
 
-            database.SaveChanges();
+            this.database.SaveChanges();
 
             return "Create command executed successfully";
         }

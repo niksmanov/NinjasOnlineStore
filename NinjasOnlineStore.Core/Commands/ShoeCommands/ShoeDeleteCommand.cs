@@ -35,7 +35,7 @@ namespace NinjasOnlineStore.Core.Commands.ShoeCommands
 
             this.database.Shoes.Remove(shoesToDelete);
 
-            this.writer.WriteLine($"Shoes with ID: {itemId} was successfuly removed!");
+            this.writer.WriteLine($"Shoes with ID: {itemId} was successfully removed!");
 
             this.database.SaveChanges();
 

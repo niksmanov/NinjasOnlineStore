@@ -35,7 +35,7 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
 
             this.database.Jackets.Remove(jacketToDelete);
 
-            this.writer.WriteLine($"Jacket with ID: {itemId} was successfuly removed!");
+            this.writer.WriteLine($"Jacket with ID: {itemId} was successfully removed!");
 
             this.database.SaveChanges();
 
