@@ -1,4 +1,5 @@
 ﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
+using NinjasOnlineStore.App.Core.Providers;
 using NinjasOnlineStore.Core.Contracts;
 using Ninject;
 using System;
@@ -11,8 +12,9 @@ namespace NinjasOnlineStore.App
         public static void Main()
         {
             IKernel kernel = new StandardKernel(new NinjasOnlineStoreModule());
-
             var engine = kernel.Get<IEngine>();
+
+            var writer = kernel.Get<ConsoleWriter>();
 
             var type = typeof(ICommand);
             var commands = AppDomain.CurrentDomain.GetAssemblies()
@@ -21,15 +23,12 @@ namespace NinjasOnlineStore.App
                 .Select(t => t.Name)
                 .Select(c => c.Split(new string[] { "Command" }, StringSplitOptions.RemoveEmptyEntries)[0]).ToList();
             commands.Sort();
-
-            Console.WriteLine("Commands list!");
-            Console.WriteLine("Please use InitializeDatabase first!", Environment.NewLine);
-            Console.WriteLine(string.Join(Environment.NewLine, commands));
+            
+            writer.WriteLine("These are Ninjas Store commands list!");
+            writer.WriteLine("Please use InitializeDatabase first!");
+            writer.WriteLine(string.Join(Environment.NewLine, commands));
 
             engine.Start();
-            //To create the database enter the command: InitializeDatabase
-
-            //To create pdf report from SqlServer, PostgreSql and SqLite enter the command: GenerateReport
         }
     }
 }
