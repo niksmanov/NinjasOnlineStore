@@ -64,6 +64,8 @@
     <Compile Include="Core\CommandsFactoryTests\GetCommand_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +77,7 @@
       <Name>NinjasOnlineStore.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
