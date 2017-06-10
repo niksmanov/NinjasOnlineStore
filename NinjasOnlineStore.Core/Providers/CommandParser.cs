@@ -1,4 +1,5 @@
 ﻿using NinjasOnlineStore.App.Core.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,6 +11,11 @@ namespace NinjasOnlineStore.App.Core.Providers
 
         public CommandParser(ICommandFactory commandFactory)
         {
+            if (commandFactory == null)
+            {
+                throw new ArgumentNullException("Command factory cannot be null!");
+            }
+
             this.commandFactory = commandFactory;
         }
 
