@@ -58,6 +58,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\CommandsFactoryTests\Constructor_Should.cs" />
+    <Compile Include="Core\CommandsFactoryTests\Fakes\FakeCommand.cs" />
+    <Compile Include="Core\CommandsFactoryTests\Fakes\FakeCommandsFactory.cs" />
+    <Compile Include="Core\CommandsFactoryTests\GetCommand_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
