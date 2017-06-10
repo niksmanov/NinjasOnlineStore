@@ -13,6 +13,11 @@ namespace NinjasOnlineStore.App.Core
 
         public CommandsFactory(IServiceLocator serviceLocator)
         {
+            if (serviceLocator == null)
+            {
+                throw new ArgumentNullException("Service locator cannot be null!");
+            }
+
             this.serviceLocator = serviceLocator;
         }
 
@@ -24,7 +29,7 @@ namespace NinjasOnlineStore.App.Core
             return serviceLocator.GetCommand(type);
         }
 
-        private TypeInfo FindCommand(string commandName)
+        protected virtual TypeInfo FindCommand(string commandName)
         {
             var currentAssembly = this.GetType().GetTypeInfo().Assembly;
             var commandTypeInfo = currentAssembly.DefinedTypes
