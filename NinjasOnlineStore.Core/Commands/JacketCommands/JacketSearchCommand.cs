@@ -15,6 +15,21 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
 
         public JacketSearchCommand(IWriter writer, IReader reader, ISqlDatabase database)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException("Writer cannot be null");
+            }
+
+            if (reader == null)
+            {
+                throw new ArgumentNullException("Reader cannot be null");
+            }
+
+            if (database == null)
+            {
+                throw new ArgumentNullException("Database cannot be null");
+            }
+
             this.writer = writer;
             this.reader = reader;
             this.database = database;
