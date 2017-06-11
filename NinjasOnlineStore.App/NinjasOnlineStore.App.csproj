@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListAllCommands.cs" />
     <Compile Include="NinjasOnlineStoreModule.cs" />
     <Compile Include="ServiceLocator.cs" />
     <Compile Include="StartUp.cs" />

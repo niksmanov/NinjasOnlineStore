@@ -22,21 +22,21 @@ namespace NinjasOnlineStore.Core.Commands.TShirtCommands
 
         public string Execute(IList<string> parameters)
         {
-            switch (parameters[0])
+            switch (parameters[0].ToLower())
             {
-                case "ListAllTShirts":
+                case "listalltshirts":
                     this.ListAllTShirts();
                     break;
-                case "ListTShirtsByColor":
+                case "listtshirtsbycolor":
                     this.ListTShirtsByColor();
                     break;
-                case "ListTShirtsByColorAndSize":
+                case "listtshirtsbycolorandsize":
                     this.ListTShirtsByColorAndSize();
                     break;
-                case "ListTShirtsByPrice":
+                case "listtshirtsbyprice":
                     this.ListTShirtsByPrice();
                     break;
-                case "ListTShirtsByGender":
+                case "listtshirtsbygender":
                     this.ListTShirtsByGender();
                     break;
                 default: throw new ArgumentException("The provided command is not supported!");

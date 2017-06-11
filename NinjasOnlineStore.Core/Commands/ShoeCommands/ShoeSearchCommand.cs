@@ -22,21 +22,21 @@ namespace NinjasOnlineStore.Core.Commands.ShoeCommands
 
         public string Execute(IList<string> parameters)
         {
-            switch (parameters[0])
+            switch (parameters[0].ToLower())
             {
-                case "ListAllShoes":
+                case "listallshoes":
                     this.ListAllShoes();
                     break;
-                case "ListShoesByColor":
+                case "listshoesbycolor":
                     this.ListShoesByColor();
                     break;
-                case "ListShoesByColorAndSize":
+                case "listshoesbycolorandsize":
                     this.ListShoesByColorAndSize();
                     break;
-                case "ListShoesByPrice":
+                case "listshoesbyprice":
                     this.ListShoesByPrice();
                     break;
-                case "ListShoesByGender":
+                case "listshoesbygender":
                     this.ListShoesByGender();
                     break;
                 default: throw new ArgumentException("The provided command is not supported!");

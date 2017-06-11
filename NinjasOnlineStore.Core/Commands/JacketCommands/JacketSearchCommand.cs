@@ -22,21 +22,21 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
 
         public string Execute(IList<string> parameters)
         {
-            switch (parameters[0])
+            switch (parameters[0].ToLower())
             {
-                case "ListAllJackets":
+                case "listalljackets":
                     this.ListAllJackets();
                     break;
-                case "ListJacketsByColor":
+                case "listjacketsbycolor":
                     this.ListJacketsByColor();
                     break;
-                case "ListJacketsByColorAndSize":
+                case "listjacketsbycolorandsize":
                     this.ListJacketsByColorAndSize();
                     break;
-                case "ListJacketsByPrice":
+                case "listjacketsbyprice":
                     this.ListJacketsByPrice();
                     break;
-                case "ListJacketsByGender":
+                case "listjacketsbygender":
                     this.ListJacketsByGender();
                     break;
                 default: throw new ArgumentException("The provided command is not supported!");

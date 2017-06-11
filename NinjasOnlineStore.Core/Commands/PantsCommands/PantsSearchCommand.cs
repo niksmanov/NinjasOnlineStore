@@ -22,21 +22,21 @@ namespace NinjasOnlineStore.Core.Commands.PantsCommands
 
         public string Execute(IList<string> parameters)
         {
-            switch (parameters[0])
+            switch (parameters[0].ToLower())
             {
-                case "ListAllPants":
+                case "listallpants":
                     this.ListAllPants();
                     break;
-                case "ListPantsByColor":
+                case "listpantsbycolor":
                     this.ListPantsByColor();
                     break;
-                case "ListPantsByColorAndSize":
+                case "listpantsbycolorandsize":
                     this.ListPantsByColorAndSize();
                     break;
-                case "ListPantsByPrice":
+                case "listpantsbyprice":
                     this.ListPantsByPrice();
                     break;
-                case "ListPantsByGender":
+                case "listpantsbygender":
                     this.ListPantsByGender();
                     break;
                 default: throw new ArgumentException("The provided command is not supported!");

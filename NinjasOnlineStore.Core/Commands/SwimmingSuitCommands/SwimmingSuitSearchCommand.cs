@@ -22,13 +22,22 @@ namespace NinjasOnlineStore.Core.Commands.SwimmingSuitCommands
 
         public string Execute(IList<string> parameters)
         {
-            switch (parameters[0])
+            switch (parameters[0].ToLower())
             {
-                case "ListAllSwimmingSuits":
+                case "listallswimmingsuits":
                     this.ListAllSwimmingSuits();
                     break;
-                case "ListSwimmingSuitsByColor":
+                case "listswimmingsuitsbycolor":
                     this.ListSwimmingSuitsByColor();
+                    break;
+                case "listswimmingsuitsbycolorandprice":
+                    this.ListSwimmingSuitsByColorAndSize();
+                    break;
+                case "listswimmingsuitsbyprice":
+                    this.ListSwimmingSuitsByPrice();
+                    break;
+                case "listswimmingsuitsbygender":
+                    this.ListSwimmingSuitsByGender();
                     break;
                 default: throw new ArgumentException("The provided command is not supported!");
             }
