@@ -94,8 +94,8 @@ namespace NinjasOnlineStore.UnitTests.Core.Commands.JacketCommands.JacketCreateC
         public void ReturnMessageForSuccess_WhenPassedValidParameters()
         {
             // Arrange
-            var sqlDatabaseStub = new Mock<ISqlDatabase>();
             var jacketsMock = new Mock<DbSet<Jacket>>();
+            var sqlDatabaseStub = new Mock<ISqlDatabase>();
             sqlDatabaseStub.Setup(db => db.Jackets).Returns(jacketsMock.Object);
 
             var createJacketCommand = new JacketCreateCommand(sqlDatabaseStub.Object);
@@ -109,6 +109,28 @@ namespace NinjasOnlineStore.UnitTests.Core.Commands.JacketCommands.JacketCreateC
 
             // Assert
             StringAssert.Contains("successfully", result);
+        }
+
+        [Test]
+        public void SaveTheCreatedJacketToDatabase_WhenInvokedWithValidParameters()
+        {
+            // Arrange
+            var jacketsStub = new Mock<DbSet<Jacket>>();
+            var sqlDatabaseMock = new Mock<ISqlDatabase>();
+            sqlDatabaseMock.Setup(db => db.Jackets).Returns(jacketsStub.Object);
+            sqlDatabaseMock.Setup(db => db.SaveChanges());
+
+            var createJacketCommand = new JacketCreateCommand(sqlDatabaseMock.Object);
+            var validParameters = new List<string>
+            {
+                "1", "2", "1", "0", "4", "3"
+            };
+
+            // Act
+            createJacketCommand.Execute(validParameters);
+            
+            // Assert
+            sqlDatabaseMock.Verify(db => db.SaveChanges(), Times.Once);
         }
     }
 }
