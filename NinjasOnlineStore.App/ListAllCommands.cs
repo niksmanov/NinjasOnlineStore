@@ -29,7 +29,6 @@ namespace NinjasOnlineStore.App
                 writer.WriteLine("- " + command);
                 if (command == "jacketsearch")
                 {
-                    writer.WriteLine(string.Join(Environment.NewLine, "- " + command));
                     writer.WriteLine("  - listalljackets");
                     writer.WriteLine("  - listjacketsbycolor");
                     writer.WriteLine("  - listjacketsbycolorandsize");
@@ -38,7 +37,6 @@ namespace NinjasOnlineStore.App
                 }
                 else if (command == "pantssearch")
                 {
-                    writer.WriteLine(string.Join(Environment.NewLine, "- " + command));
                     writer.WriteLine("  - listallpants");
                     writer.WriteLine("  - listpantsbycolor");
                     writer.WriteLine("  - listpantsbycolorandsize");
@@ -47,16 +45,14 @@ namespace NinjasOnlineStore.App
                 }
                 else if (command == "tshirtsearch")
                 {
-                    writer.WriteLine(string.Join(Environment.NewLine, "- " + command));
-                    writer.WriteLine("  - listallpants");
-                    writer.WriteLine("  - listpantsbycolor");
-                    writer.WriteLine("  - listpantsbycolorandsize");
-                    writer.WriteLine("  - listpantsbyprice");
-                    writer.WriteLine("  - listpantsbygender");
+                    writer.WriteLine("  - listalltshirts");
+                    writer.WriteLine("  - listtshirtsbycolor");
+                    writer.WriteLine("  - listtshirtsbycolorandsize");
+                    writer.WriteLine("  - listtshirtsbyprice");
+                    writer.WriteLine("  - listtshirtsbygender");
                 }
                 else if (command == "swimmingsuitsearch")
                 {
-                    writer.WriteLine(string.Join(Environment.NewLine, "- " + command));
                     writer.WriteLine("  - listallswimmingsuits");
                     writer.WriteLine("  - listswimmingsuitsbycolor");
                     writer.WriteLine("  - listswimmingsuitsbycolorandsize");
@@ -65,7 +61,6 @@ namespace NinjasOnlineStore.App
                 }
                 else if (command == "shoesearch")
                 {
-                    writer.WriteLine(string.Join(Environment.NewLine, "- " + command));
                     writer.WriteLine("  - listallshoes");
                     writer.WriteLine("  - listshoesbycolor");
                     writer.WriteLine("  - listshoesbycolorandsize");
