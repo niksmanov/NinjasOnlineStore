@@ -67,6 +67,8 @@
     <Compile Include="Core\Commands\JacketCommands\JacketCreateCommandTests\Execute_Should.cs" />
     <Compile Include="Core\Commands\JacketCommands\JacketDeleteCommandTests\Constructor_Should.cs" />
     <Compile Include="Core\Commands\JacketCommands\JacketDeleteCommandTests\Execute_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketSearchCommandTests\Constructor_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketSearchCommandTests\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
