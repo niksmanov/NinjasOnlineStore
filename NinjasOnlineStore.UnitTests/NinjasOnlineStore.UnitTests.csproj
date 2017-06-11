@@ -39,6 +39,7 @@
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Moq, Version=4.7.25.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.7.25\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
@@ -58,8 +59,22 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\CommandsFactoryTests\Constructor_Should.cs" />
+    <Compile Include="Core\CommandsFactoryTests\Fakes\FakeCommand.cs" />
+    <Compile Include="Core\CommandsFactoryTests\Fakes\FakeCommandsFactory.cs" />
+    <Compile Include="Core\CommandsFactoryTests\GetCommand_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketCreateCommandTests\Constructor_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketCreateCommandTests\Execute_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketDeleteCommandTests\Constructor_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketDeleteCommandTests\Execute_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketSearchCommandTests\Constructor_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketSearchCommandTests\Execute_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketUpdateCommandTests\Constructor_Should.cs" />
+    <Compile Include="Core\Commands\JacketCommands\JacketUpdateCommandTests\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +85,12 @@
       <Project>{464548dc-99ee-48ed-ab2b-ed54cd237152}</Project>
       <Name>NinjasOnlineStore.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NinjasOnlineStore.SqlServer\NinjasOnlineStore.SqlServer.csproj">
+      <Project>{2638eeeb-4f39-45fb-8c17-4bd75571c7ed}</Project>
+      <Name>NinjasOnlineStore.SqlServer</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

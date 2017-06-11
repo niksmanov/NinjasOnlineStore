@@ -12,6 +12,11 @@ namespace NinjasOnlineStore.Core.Commands.JacketCommands
 
         public JacketCreateCommand(ISqlDatabase database)
         {
+            if (database == null)
+            {
+                throw new ArgumentNullException("Database cannot be null!");
+            }
+
             this.database = database;
         }
 
