@@ -1,9 +1,5 @@
-﻿using NinjasOnlineStore.App.Core.Commands.Contracts;
-using NinjasOnlineStore.App.Core.Providers;
-using NinjasOnlineStore.Core.Contracts;
+﻿using NinjasOnlineStore.Core.Contracts;
 using Ninject;
-using System;
-using System.Linq;
 
 namespace NinjasOnlineStore.App
 {
@@ -12,11 +8,11 @@ namespace NinjasOnlineStore.App
         public static void Main()
         {
             IKernel kernel = new StandardKernel(new NinjasOnlineStoreModule());
+
             var engine = kernel.Get<IEngine>();
+            var listAllCommands = kernel.Get<ListAllCommands>();
 
-            ListAllCommands list = new ListAllCommands();
-            list.CommandsList();
-
+            listAllCommands.CommandsList();
             engine.Start();
         }
     }
